@@ -39,7 +39,6 @@ class Game {
     }
     // If the selected letter matches, call the showMatchedLetter() method on the phrase and then call the checkForWin() method.
     else if (letterFound) {
-      console.log(letterFound);
       phrase.showMatchedLetter(letterFound);
       this.checkForWin();
     }
@@ -120,8 +119,6 @@ class Game {
 
   // calls the getRandomPhrase() method, and adds that phrase to the board by calling the Phrase class' addPhraseToDisplay() method.
   startGame(){
-    // const phrase = new Phrase();
-    // console.log(game.phrases[0]);
     phrase.addPhraseToDisplay(this.getRandomPhrase());
 
   }

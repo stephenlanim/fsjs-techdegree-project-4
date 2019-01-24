@@ -41,7 +41,7 @@ class Phrase {
     $letters.each( function (index, letter){
       const $letter = $(letter).text().toLowerCase();
       // If letter matches clicked button
-      if ($letter === key.textContent) {
+      if ($letter === key.toLowerCase()) {
 
 
         // store matching letter inside response
