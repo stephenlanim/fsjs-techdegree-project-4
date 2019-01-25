@@ -10,13 +10,6 @@
   creates a new instance of the Game class,
   adds event listeners for the play button and onscreen keyboard.
 
-
-Add an event listener to the "Start Game" button which calls the resetDisplay() function, creates a new Game object, and starts the game.
-Add event listeners to each of the keyboard buttons, so that clicking a button calls the markButton() function.
-NOTE: Keyboard functionality
-
-Only the keys of the onscreen keyboard should be clickable. Clicking the space between and around the keys should not trigger the click event.
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 // Global Variables
@@ -26,9 +19,8 @@ const $keyboard = $('#qwerty'); // on-screen keybaord
 const $phraseBoard = $('#phrase ul'); // on-screen phrase board
 const $tries = $('.tries img'); //hearts
 
-// Class Initiations
+// Game Class Initialization
 const game = new Game();
-const phrase = new Phrase();
 
 // Hides the start screen overlay
 function resetDisplay(){
@@ -39,35 +31,24 @@ function resetDisplay(){
 
 // Function to disable and mark the on-screen keyboard and call the Game.handleInteraction() method
 function markButton(key){
-  // If input is a button on the on-screen keyboard...
-  if (key.tagName === 'BUTTON') {
-    console.log(key.tagName);
-    // show clicked key as "chosen"
-    $(key).addClass('chosen')
-      // disable clicked key
-      .attr('disabled', true);
-    // Process input
-    game.handleInteraction(phrase, key.textContent);
-  }
-  // If input comes from user pressing keyboard letter...
-  else if ((key) => {/[a-z]/.test(key)}) {
-    console.log('press');
+
     // Loop through on-screen keyboard buttons
     $('.key').each((i, button) => {
+
       // If button matches user input...
       if ($(button).text().toLowerCase() === key){
+
         // show clicked key as "chosen"
         $(button).addClass('chosen')
           // disable clicked key
           .attr('disabled', true);
       }
-    });
+    }); // end of $('.key').each() loop
 
     // Process user input/interaction
-    game.handleInteraction(phrase, key);
-  }
+    game.handleInteraction(key);
 
-}
+} // end of markButton()
 
 // Clear overlay screen
 function clearScreen() {
@@ -118,11 +99,20 @@ $playBtn.on('click', ()=> {
 // When on-screen keyboard is clicked...
 $keyboard.on('click', (e) => {
   const key = e.target;
-  markButton(key);
+  // If input is a button on the on-screen keyboard (i.e. not a space between buttons)...
+  if (key.tagName === 'BUTTON') {
+
+    markButton(key.textContent);
+  }
+
 });
 
 // When user keyboard is press...
 $(document).on('keypress', (e) =>{
   const key = e.key;
-  markButton(key);
+  // If player presses a letter on their keyboard...
+  if ((key) => {/[a-z]/.test(key)}) {
+
+    markButton(key);
+  }
 });

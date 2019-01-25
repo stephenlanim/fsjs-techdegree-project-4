@@ -4,12 +4,15 @@
 // ============================================
 
 class Phrase {
+  constructor(phrase){
+    this.phraseArr = phrase;
+  }
 
   // Adds letter placeholders to the display when the game starts
-  addPhraseToDisplay(arr){
+  addPhraseToDisplay(){
     // Loop through each character in phrase array
-    for (let i = 0; i < arr.length; i += 1) {
-      const character = arr[i];
+    for (let i = 0; i < this.phraseArr.length; i += 1) {
+      const character = this.phraseArr[i];
 
       // Create a list item
       const li = document.createElement('li');

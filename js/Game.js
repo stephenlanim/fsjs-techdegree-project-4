@@ -36,15 +36,15 @@ class Game {
   }
 
   // Check if the button clicked by the player matches a letter in the phrase
-  handleInteraction(phrase, key){
-    const letterFound = phrase.checkLetter(key);
+  handleInteraction(key){
+    const letterFound = this.phrase.checkLetter(key);
     // If it does not, then call the removeLife() method..
     if (letterFound === null){
       this.removeLife();
     }
     // If the selected letter matches, call the showMatchedLetter() method on the phrase and then call the checkForWin() method.
     else if (letterFound) {
-      phrase.showMatchedLetter(letterFound);
+      this.phrase.showMatchedLetter(letterFound);
       this.checkForWin();
     }
   } // end of handleInteraction()
@@ -123,7 +123,8 @@ class Game {
 
   // Calls the getRandomPhrase() method, and adds that phrase to the board by calling the Phrase class' addPhraseToDisplay() method
   startGame(){
-    phrase.addPhraseToDisplay(this.getRandomPhrase());
+    this.phrase = new Phrase(game.getRandomPhrase());
+    this.phrase.addPhraseToDisplay();
 
   }
 } // end of Game class
