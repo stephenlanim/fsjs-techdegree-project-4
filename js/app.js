@@ -111,7 +111,7 @@ $keyboard.on('click', (e) => {
 $(document).on('keypress', (e) =>{
   const key = e.key;
   // If player presses a letter on their keyboard...
-  if ((key) => {/[a-z]/.test(key)}) {
+  if ((key) => {/[a-z]/.test(key);}) {
 
     markButton(key);
   }

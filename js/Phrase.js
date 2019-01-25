@@ -33,7 +33,7 @@ class Phrase {
 
       // Append character to phrase board
       $phraseBoard.append(li);
-    };
+    }
   }
 
   // Checks if letter selected by player matches a letter in the phrase
