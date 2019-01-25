@@ -1,3 +1,8 @@
+/*jshint esversion: 6 */
+// ============================================
+//   Phrase Class
+// ============================================
+
 class Phrase {
 
   // Adds letter placeholders to the display when the game starts
@@ -24,7 +29,7 @@ class Phrase {
       }
 
       // Append character to phrase board
-      $('#phrase ul').append(li);
+      $phraseBoard.append(li);
     };
   }
 
@@ -43,12 +48,11 @@ class Phrase {
       // If letter matches clicked button
       if ($letter === key.toLowerCase()) {
 
-
         // store matching letter inside response
         response = $letter;
         // return response;
       }
-      // Note: Returning null via an else statement produces a bug in which the value returned is always null unless the player chose the very last letter in the phrase. This is because the loop checks the player's chosen letter against all letters in the phrase and only returns to very last value in the loop. Adding a console.log() before each return statement in the if and else statements reveals the nature of this issue.
+
     }); // End of $letters.each()
 
     // return value of chosen letter
@@ -70,11 +74,8 @@ class Phrase {
         // add "show" class to letter
         $(letter).addClass('show');
 
-        // store matching letter inside response
-        // response = $letter;
-        // return response;
       }
-      // Note: Returning null via an else statement produces a bug in which the value returned is always null unless the player chose the very last letter in the phrase. This is because the loop checks the player's chosen letter against all letters in the phrase and only returns to very last value in the loop. Adding a console.log() before each return statement in the if and else statements reveals the nature of this issue.
+
     }); // End of $letters.each()
 
   }

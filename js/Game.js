@@ -1,3 +1,8 @@
+/*jshint esversion: 6 */
+// ============================================
+//   Game Class
+// ============================================
+
 class Game {
   constructor(){
     this.missed = 0;
@@ -44,15 +49,15 @@ class Game {
     }
   } // end of handleInteraction()
 
-  // this method removes a life, removes a heart from the board, and, if the player is out of lives, ends the game.
+  // Removes a life, removes a heart from the board, and, if the player is out of lives, ends the game.
   removeLife(){
     // remove one live heart (by replacing it with a lost heart)
-    $('.tries img').eq(this.missed).attr('src', 'images/lostHeart.png');
+    $tries.eq(this.missed).attr('src', 'images/lostHeart.png');
     // add to count of player's missed guesses
     this.missed += 1;
 
     // If player used up all tries/hearts
-    if (this.missed === $('.tries img').length) {
+    if (this.missed === $tries.length) {
       // Clear screen before displaying end-of-game message
       clearScreen();
 
@@ -62,7 +67,7 @@ class Game {
     }
   } // end of removeLife()
 
-  // this method checks to see if the player has selected all of the letters.
+  // Checks to see if the player has selected all of the letters
   checkForWin(){
     // Get every letter in phrase
     const $allPhraseLetters = $('.letter').length;
@@ -81,7 +86,7 @@ class Game {
 
   } // end of checkForWin()
 
-  // this method displays a message if the player wins or a different message if they lose.
+  // Displays a win or lose message based on the player's performance as indicated on call
   gameOver(condition){
     // Win message
     const winMessage = document.createElement('h3');
@@ -94,30 +99,29 @@ class Game {
     // If player has won...
     if (condition === 'win'){
       // show "win" screen
-      $('#overlay').addClass('win').delay(400).show('clip');
+      $startScreen.addClass('win').delay(400).show('clip');
 
       // display "win" message after title
       $('.title').after(winMessage);
 
       // change start button to reset button
-      $('#btn__reset').text('Play Again');
+      $playBtn.text('Play Again');
     }
     // If player has lost...
     else if (condition === 'lose'){
       // show "win" screen
-      $('#overlay').addClass('lose').delay(400).show('clip');
+      $startScreen.addClass('lose').delay(400).show('clip');
 
       // display "win" message after title
       $('.title').after(loseMessage);
 
       // change start button to reset button
-      $('#btn__reset').text('Play Again');
+      $playBtn.text('Play Again');
     }
-
 
   }
 
-  // calls the getRandomPhrase() method, and adds that phrase to the board by calling the Phrase class' addPhraseToDisplay() method.
+  // Calls the getRandomPhrase() method, and adds that phrase to the board by calling the Phrase class' addPhraseToDisplay() method
   startGame(){
     phrase.addPhraseToDisplay(this.getRandomPhrase());
 
