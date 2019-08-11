@@ -13,11 +13,16 @@ class Game {
       'Materialize',
       'Angular JS',
       'React',
+      'Vue',
+      'Backbone',
+      'Ember',
       'Laravel',
       'Node JS',
       'Django',
       'Ruby on Rails',
-      'ASP NET'
+      'ASP NET',
+      'Express',
+      'Flask'
     ];
   }
 
