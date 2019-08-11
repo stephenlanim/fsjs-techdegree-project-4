@@ -16,13 +16,18 @@ class Game {
       'Vue',
       'Backbone',
       'Ember',
+      'Knockout',
       'Laravel',
       'Node JS',
       'Django',
       'Ruby on Rails',
       'ASP NET',
       'Express',
-      'Flask'
+      'Flask',
+      'Symfony',
+      'CakePHP',
+      'Selenium',
+      'Hibernate'
     ];
   }
 
